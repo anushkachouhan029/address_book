@@ -11,7 +11,7 @@ namespace AddressBook.Repository
     {
         Dictionary<long, ContactDetails> contactDetails = new Dictionary<long, ContactDetails>();
 
-        public void AddContactDetails(ContactDetails contactDetail) //using mobile number because it is unique.
+        public void AddContactDetails(ContactDetails contactDetail) //using mobileNumber because it is unique.
         {
             contactDetails.Add(contactDetail.MobileNumber, contactDetail);
         }
@@ -73,6 +73,12 @@ namespace AddressBook.Repository
                     contactDetails.Add(obj.MobileNumber, obj);
                     break;
             }
+        }
+
+        public void DeleteContact(long mobileNumber)
+        {
+            var obj = contactDetails[mobileNumber];
+            contactDetails.Remove(mobileNumber);
         }
 
         public void DisplayContact()
